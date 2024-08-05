@@ -1,11 +1,9 @@
 import java.util.Date;
-import java.text.SimpleDateFormat;
 
 public class Ingresso implements IReceita {
     private Date data;
     protected double valor;
     protected char tipo;
-    public SimpleDateFormat formatoData = new SimpleDateFormat("dd/MM/yyyy"); // Para converter String para Date
 
     public Ingresso(double valor) {
         this.data = new Date();
