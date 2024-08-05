@@ -1,6 +1,6 @@
-public class IngressoVIP extends Ingresso{
-    public IngressoVIP(double valor) {
-        super(valor*2);
-        this.tipo = 'v';
+public class IngressoMeiaEntrada extends Ingresso{
+    public IngressoMeiaEntrada(double valor) {
+        super(valor/2);
+        this.tipo = 'm';
     }
 }
