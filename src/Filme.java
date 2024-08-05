@@ -15,6 +15,7 @@ public class Filme extends Evento{
                 System.out.println(atual.toString());
             }
         }
+        System.out.println("Total: " + totalReceita());
         System.out.println("=========================================================\n");
 
     }
@@ -28,5 +29,10 @@ public class Filme extends Evento{
                 JOptionPane.showMessageDialog(null, "Não há ingresso VIP no cinema!!","<< ERRO 561 >>", JOptionPane.ERROR_MESSAGE);
             }
         }
+    }
+
+    @Override
+    public int ingressoVIPDisp() {
+        return 0;
     }
 }
