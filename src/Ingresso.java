@@ -1,6 +1,5 @@
 import java.util.Date;
 import java.text.SimpleDateFormat;
-import javax.swing.*;
 
 public class Ingresso implements IReceita {
     private Date data;
@@ -8,12 +7,8 @@ public class Ingresso implements IReceita {
     protected char tipo;
     public SimpleDateFormat formatoData = new SimpleDateFormat("dd/MM/yyyy"); // Para converter String para Date
 
-    public Ingresso(String data, double valor) {
-        try{ // Converte String para Date
-            this.data = formatoData.parse(data);
-        }catch (Exception e){
-            System.out.println("<< Date Error >>");
-        }
+    public Ingresso(double valor) {
+        this.data = new Date();
         this.valor = valor;
         this.tipo = 'n';
     }
