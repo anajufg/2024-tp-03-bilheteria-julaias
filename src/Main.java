@@ -18,28 +18,19 @@ public class Main {
         eventos.add(hamlet);
         eventos.add(peterPan);
 
-        moana.addIngresso(new Ingresso("08/07/2024", moana.getPreco()));
-        moana.addIngresso(new IngressoVIP("08/07/2024", moana.getPreco()));
-        moana.addIngresso(new Ingresso("08/07/2024", moana.getPreco()));
-        moana.addIngresso(new IngressoMeiaEntrada("08/07/2024", moana.getPreco()));
+        moana.addIngresso(new Ingresso(moana.getPreco()));
+        moana.addIngresso(new IngressoVIP(moana.getPreco()));
+        moana.addIngresso(new Ingresso(moana.getPreco()));
+        moana.addIngresso(new IngressoMeiaEntrada(moana.getPreco()));
 
-        avengers.addIngresso(new Ingresso("09/07/2024", avengers.getPreco()));
-        avengers.addIngresso(new Ingresso("09/07/2024", avengers.getPreco()));
-        avengers.addIngresso(new IngressoMeiaEntrada("09/07/2024", avengers.getPreco()));
+        avengers.addIngresso(new Ingresso(avengers.getPreco()));
+        avengers.addIngresso(new Ingresso(avengers.getPreco()));
+        avengers.addIngresso(new IngressoMeiaEntrada(avengers.getPreco()));
 
-        filarmonica.addIngresso(new Ingresso("10/07/2024", filarmonica.getPreco()));
-        filarmonica.addIngresso(new IngressoVIP("10/07/2024", filarmonica.getPreco()));
+        filarmonica.addIngresso(new Ingresso(filarmonica.getPreco()));
+        filarmonica.addIngresso(new IngressoVIP(filarmonica.getPreco()));
 
-
-        System.out.println("Normal: " + moana.ingressoNormalDisp());
-        System.out.println("Meia: " + moana.ingressoMeiaDisp());
-        System.out.println("VIP: " + moana.ingressoVIPDisp());
-
-        System.out.println("Lugares: " + moana.lugaresDisp());
-
-        System.out.println("Venda: " + moana.totalVendas());
-
-        System.out.println(avengers.toString());
+        System.out.println(avengers.toString() + "\n");
 
         moana.extratoReceita();
         avengers.extratoReceita();
@@ -88,13 +79,13 @@ public class Main {
             Ingresso ingresso = null;
             switch (tipoIngresso) {
                 case "Normal":
-                    eventoSelecionado.addIngresso(new Ingresso("08/07/2024", eventoSelecionado.getPreco()));
+                    eventoSelecionado.addIngresso(new Ingresso(eventoSelecionado.getPreco()));
                     break;
                 case "VIP":
-                    eventoSelecionado.addIngresso(new IngressoVIP("08/07/2024", eventoSelecionado.getPreco()));
+                    eventoSelecionado.addIngresso(new IngressoVIP(eventoSelecionado.getPreco()));
                     break;
                 case "Meia Entrada":
-                    eventoSelecionado.addIngresso(new IngressoMeiaEntrada("08/07/2024", eventoSelecionado.getPreco()));
+                    eventoSelecionado.addIngresso(new IngressoMeiaEntrada(eventoSelecionado.getPreco()));
                     break;
             }
         }
