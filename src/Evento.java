@@ -50,7 +50,7 @@ abstract class Evento implements IReceita{
                 i++;
             }
         }
-        return i;
+        return lugaresDisp() - i;
     }
 
     public int ingressoMeiaDisp() {
@@ -60,7 +60,7 @@ abstract class Evento implements IReceita{
                 i++;
             }
         }
-        return i;
+        return lugaresDisp() - i;
     }
 
     public int ingressoVIPDisp() {
@@ -70,7 +70,7 @@ abstract class Evento implements IReceita{
                 i++;
             }
         }
-        return i;
+        return  lugaresDisp() - i;
     }
 
     @Override
