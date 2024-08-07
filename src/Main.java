@@ -19,7 +19,6 @@ public class Main {
         eventos.add(peterPan);
 
         moana.addIngresso(new Ingresso(moana.getPreco()));
-        moana.addIngresso(new IngressoVIP(moana.getPreco()));
         moana.addIngresso(new Ingresso(moana.getPreco()));
         moana.addIngresso(new IngressoMeiaEntrada(moana.getPreco()));
 
@@ -45,50 +44,63 @@ public class Main {
 
         //dialogos para adquirir um ingresso com jOptionPane
         String[] nomesEventos = {moana.getNome(), avengers.getNome(), filarmonica.getNome(), hamlet.getNome(), peterPan.getNome()};
+        String[] options = {"Sim", "Não"};
+        int opcao;
 
-        String nomeEvento = (String) JOptionPane.showInputDialog(null,
-                "<< COMPRA DE INGRESSO >>",
-                "Seleção de Evento",
-                JOptionPane.PLAIN_MESSAGE,
-                null,
-                nomesEventos,
-                nomesEventos[0]);
+        do {
+            opcao = JOptionPane.showOptionDialog(null,
+                    "Deseja comprar um ingresso?",
+                    "<< COMPRA DE INGRESSO >>",
+                    JOptionPane.YES_NO_OPTION,
+                    JOptionPane.QUESTION_MESSAGE,
+                    null, options, options[0]);
 
-        //encontra o evento selecionado
-        Evento eventoSelecionado = null;
-        for (Evento evento : eventos) {
-            if (evento.getNome().equals(nomeEvento)) {
-                eventoSelecionado = evento;
-                break;
+            if (opcao == 0) {
+                String nomeEvento = (String) JOptionPane.showInputDialog(null,
+                        "<< COMPRA DE INGRESSO >>",
+                        "Seleção de Evento",
+                        JOptionPane.PLAIN_MESSAGE,
+                        null,
+                        nomesEventos,
+                        nomesEventos[0]);
+
+                //encontra o evento selecionado
+                Evento eventoSelecionado = null;
+                for (Evento evento : eventos) {
+                    if (evento.getNome().equals(nomeEvento)) {
+                        eventoSelecionado = evento;
+                        break;
+                    }
+                }
+
+                if (eventoSelecionado != null) {
+                    //tipos de ingresso
+                    Object[] opcoesIngressos = {"Normal", "VIP", "Meia Entrada"};
+
+                    String tipoIngresso = (String) JOptionPane.showInputDialog(null,
+                            "<< TIPO DO INGRESSO>>",
+                            "Seleção de Ingresso",
+                            JOptionPane.PLAIN_MESSAGE,
+                            null,
+                            opcoesIngressos,
+                            "Normal");
+
+                    //adiciona o ingresso selecionado ao evento
+                    Ingresso ingresso = null;
+                    switch (tipoIngresso) {
+                        case "Normal":
+                            eventoSelecionado.addIngresso(new Ingresso(eventoSelecionado.getPreco()));
+                            break;
+                        case "VIP":
+                            eventoSelecionado.addIngresso(new IngressoVIP(eventoSelecionado.getPreco()));
+                            break;
+                        case "Meia Entrada":
+                            eventoSelecionado.addIngresso(new IngressoMeiaEntrada(eventoSelecionado.getPreco()));
+                            break;
+                    }
+                }
             }
-        }
-
-        if (eventoSelecionado != null) {
-            //tipos de ingresso
-            Object[] opcoesIngressos = {"Normal", "VIP", "Meia Entrada"};
-
-            String tipoIngresso = (String) JOptionPane.showInputDialog(null,
-                    "<< TIPO DO INGRESSO>>",
-                    "Seleção de Ingresso",
-                    JOptionPane.PLAIN_MESSAGE,
-                    null,
-                    opcoesIngressos,
-                    "Normal");
-
-            //adiciona o ingresso selecionado ao evento
-            Ingresso ingresso = null;
-            switch (tipoIngresso) {
-                case "Normal":
-                    eventoSelecionado.addIngresso(new Ingresso(eventoSelecionado.getPreco()));
-                    break;
-                case "VIP":
-                    eventoSelecionado.addIngresso(new IngressoVIP(eventoSelecionado.getPreco()));
-                    break;
-                case "Meia Entrada":
-                    eventoSelecionado.addIngresso(new IngressoMeiaEntrada(eventoSelecionado.getPreco()));
-                    break;
-            }
-        }
+        } while (opcao != 1);
 
         //teste de funcionalidade - tudo certo!!
         receitaTotalAcumulada = Evento.receitaTotalAcumulada(eventos);

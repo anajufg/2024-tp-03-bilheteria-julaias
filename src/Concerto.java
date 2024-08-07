@@ -15,7 +15,7 @@ public class Concerto extends Evento{
                 System.out.println(atual.toString());
             }
         }
-        System.out.println("Total: " + totalReceita());
+        System.out.println("Receita total: " + totalReceita());
         System.out.println("==========================================================\n");
 
     }
@@ -23,10 +23,9 @@ public class Concerto extends Evento{
     @Override
     public void addIngresso(Ingresso newIngresso) {
         if(ingressos.size() <= capacidade) {
-            if (newIngresso.tipo == 'v' && ingressoVIPDisp() <= capacidade * 0.1 && ingressoVIPDisp() > 0) {
+            if ((newIngresso.tipo == 'v' && ingressoVIPDisp() <= capacidade * 0.1 && ingressoVIPDisp() > 0) || (newIngresso.tipo != 'v')) {
                 this.ingressos.add(newIngresso);
-            } else if (newIngresso.tipo != 'v') {
-                this.ingressos.add(newIngresso);
+                JOptionPane.showMessageDialog(null, "Compra realizada!","<< COMPRA DE INGRESSO >>", JOptionPane.PLAIN_MESSAGE);
             } else {
                 JOptionPane.showMessageDialog(null, "Não há mais ingresso VIP disponível!!","<< ERRO 562 >>", JOptionPane.ERROR_MESSAGE);
             }

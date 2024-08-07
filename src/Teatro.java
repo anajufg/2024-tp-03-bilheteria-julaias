@@ -15,7 +15,7 @@ public class Teatro extends Evento{
                 System.out.println(atual.toString());
             }
         }
-        System.out.println("Total: " + totalReceita());
+        System.out.println("Receita total: " + totalReceita());
         System.out.println("==========================================================\n");
 
     }
@@ -23,10 +23,9 @@ public class Teatro extends Evento{
     @Override
     public void addIngresso(Ingresso newIngresso) {
         if(ingressos.size() <= capacidade) {
-            if (newIngresso.tipo == 'm' && ingressoMeiaDisp() <= capacidade * 0.2 && ingressoMeiaDisp() > 0) {
+            if ((newIngresso.tipo == 'm' && ingressoMeiaDisp() <= capacidade * 0.2 && ingressoMeiaDisp() > 0) || (newIngresso.tipo != 'm')) {
                 this.ingressos.add(newIngresso);
-            } else if (newIngresso.tipo != 'm') {
-                this.ingressos.add(newIngresso);
+                JOptionPane.showMessageDialog(null, "Compra realizada!","<< COMPRA DE INGRESSO >>", JOptionPane.PLAIN_MESSAGE);
             } else {
                 JOptionPane.showMessageDialog(null, "Não há mais ingresso Meia-Entrada disponível!!","<< ERRO 563 >>", JOptionPane.ERROR_MESSAGE);
             }

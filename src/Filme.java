@@ -15,7 +15,7 @@ public class Filme extends Evento{
                 System.out.println(atual.toString());
             }
         }
-        System.out.println("Total: " + totalReceita());
+        System.out.println("Receita total: " + totalReceita());
         System.out.println("=========================================================\n");
 
     }
@@ -25,6 +25,7 @@ public class Filme extends Evento{
         if(ingressos.size() <= capacidade) {
             if (newIngresso.tipo != 'v') {
                 this.ingressos.add(newIngresso);
+                JOptionPane.showMessageDialog(null, "Compra realizada!","<< COMPRA DE INGRESSO >>", JOptionPane.PLAIN_MESSAGE);
             } else {
                 JOptionPane.showMessageDialog(null, "Não há ingresso VIP no cinema!!","<< ERRO 561 >>", JOptionPane.ERROR_MESSAGE);
             }
