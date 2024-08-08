@@ -25,10 +25,12 @@ public class Concerto extends Evento{
         if(ingressos.size() <= capacidade) {
             if ((newIngresso.tipo == 'v' && ingressoVIPDisp() <= capacidade * 0.1 && ingressoVIPDisp() > 0) || (newIngresso.tipo != 'v')) {
                 this.ingressos.add(newIngresso);
-                JOptionPane.showMessageDialog(null, "Compra realizada!","<< COMPRA DE INGRESSO >>", JOptionPane.PLAIN_MESSAGE);
+                JOptionPane.showMessageDialog(null, "<< COMPRA REALIZADA >>","Operção concluída com sucesso", JOptionPane.PLAIN_MESSAGE);
             } else {
                 JOptionPane.showMessageDialog(null, "Não há mais ingresso VIP disponível!!","<< ERRO 562 >>", JOptionPane.ERROR_MESSAGE);
             }
+        } else {
+            JOptionPane.showMessageDialog(null, "Não há mais ingressos disponíveis","<< ERRO 564 >>", JOptionPane.ERROR_MESSAGE);
         }
     }
 
